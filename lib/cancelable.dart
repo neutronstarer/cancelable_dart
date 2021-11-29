@@ -16,5 +16,5 @@ class Cancelable {
     return sub;
   }
 
-  late final StreamController _ctrl = StreamController.broadcast();
+  late final StreamController _ctrl = StreamController.broadcast(sync: true);
 }
