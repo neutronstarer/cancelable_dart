@@ -1,6 +1,6 @@
 name: cancelable
 description: cancel operation.
-version: 0.0.6
+version: 0.0.7
 homepage: https://github.com/neutronstarer/cancelable_dart
 
 environment:

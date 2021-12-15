@@ -1,23 +1,23 @@
 import 'dart:async';
 
-///[Disposable] Dispose class
+/// [Disposable] Dispose class
 abstract class Disposable {
-  ///[dispose] dispose cancel-awaiting.
+  /// [dispose] dispose cancel-awaiting.
   Future<void> dispose();
 }
 
-///[Cancelable] Cancel context.
+/// [Cancelable] Cancel context.
 abstract class Cancelable {
-  ///[Cancelable] Create instance.
+  /// [Cancelable] Create instance.
   factory Cancelable() {
     return _Cancelable();
   }
 
-  ///[cancel] Cancel.
+  /// [cancel] Cancel.
   void cancel();
 
-  ///[whenCancel] Call [f] when cancel.
-  ///[f] cancel function.
+  /// [whenCancel] Call [f] when cancel.
+  /// [f] cancel function.
   Disposable whenCancel(Function() f);
 }
 
