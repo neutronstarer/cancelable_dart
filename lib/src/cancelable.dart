@@ -44,11 +44,18 @@ class _Cancelable implements Cancelable {
     StreamSubscription? sub;
     sub = _ctrl.stream.listen((_) async {
       f();
-      await sub?.cancel();
+      try {
+        await sub?.cancel();
+        sub = null;
+      } catch (_) {
+      }
     });
     return _Disposable._(() async {
-      await sub?.cancel();
-      sub = null;
+      try {
+        await sub?.cancel();
+        sub = null;
+      } catch (_) {
+      }
     });
   }
 
