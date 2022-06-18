@@ -27,9 +27,12 @@
 * TODO: comment.
 
 ## 0.0.7
-* TODO:
+* TODO: comment.
 
 ## 0.0.8
 * TODO: Try catch.
+
+## 1.0.0
+* Stable.
 
 
