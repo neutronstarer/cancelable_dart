@@ -47,15 +47,13 @@ class _Cancelable implements Cancelable {
       try {
         await sub?.cancel();
         sub = null;
-      } catch (_) {
-      }
+      } catch (_) {}
     });
     return _Disposable._(() async {
       try {
         await sub?.cancel();
         sub = null;
-      } catch (_) {
-      }
+      } catch (_) {}
     });
   }
 

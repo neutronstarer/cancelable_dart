@@ -10,8 +10,10 @@ final disposable = cancelable.whenCancel((){
     // cancel your operation
 });
 // do someing
+```
 
-// when operation finished, dispose cancelletion of the operation.
+### dispose cancelletion
+```dart
 disposable.dispose();
 ```
 
