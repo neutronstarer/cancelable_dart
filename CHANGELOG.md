@@ -1,38 +1,39 @@
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Describe initial release.
 
 ## 0.0.2
 
-* TODO: optimize project.
+* optimize project.
 
 ## 0.0.3
 
-* TODO: optimize project.
+* optimize project.
 
 ## 0.0.4
 
-* TODO: github source url.
+* github source url.
 
 ## 0.0.5
 
-* TODO: optimize project.
+* optimize project.
 
 ## 0.0.6
 
-* TODO: comment.
+* comment.
 
 ## 0.0.6
 
-* TODO: comment.
+* comment.
 
 ## 0.0.7
-* TODO: comment.
+* comment.
 
 ## 0.0.8
-* TODO: Try catch.
+* Try catch.
 
 ## 1.0.0
 * Stable.
 
-
+## 1.0.1
+* optimize project.

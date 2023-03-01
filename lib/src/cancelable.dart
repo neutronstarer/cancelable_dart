@@ -36,26 +36,18 @@ class _Disposable implements Disposable {
 class _Cancelable implements Cancelable {
   _Cancelable();
 
+  var cancels = <void Function()>[];
   void cancel() {
-    _ctrl.add(null);
+    cancels.forEach((element) {
+      element();
+    });
+    cancels.clear();
   }
 
   Disposable whenCancel(Function() f) {
-    StreamSubscription? sub;
-    sub = _ctrl.stream.listen((_) async {
-      f();
-      try {
-        await sub?.cancel();
-        sub = null;
-      } catch (_) {}
-    });
+    cancels.add(f);
     return _Disposable._(() async {
-      try {
-        await sub?.cancel();
-        sub = null;
-      } catch (_) {}
+      cancels.remove(f);
     });
   }
-
-  late final StreamController _ctrl = StreamController.broadcast(sync: true);
 }
