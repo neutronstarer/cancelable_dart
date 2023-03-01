@@ -1,9 +1,7 @@
-import 'dart:async';
-
 /// [Disposable] Dispose class
 abstract class Disposable {
   /// [dispose] dispose cancel-awaiting.
-  Future<void> dispose();
+  void dispose();
 }
 
 /// [Cancelable] Cancel context.
@@ -25,12 +23,12 @@ class _Disposable implements Disposable {
   _Disposable._(this._dispose);
 
   @override
-  Future<void> dispose() async {
-    await _dispose?.call();
+  void dispose() {
+    _dispose?.call();
     _dispose = null;
   }
 
-  Future<void> Function()? _dispose;
+  void Function()? _dispose;
 }
 
 class _Cancelable implements Cancelable {
@@ -46,7 +44,7 @@ class _Cancelable implements Cancelable {
 
   Disposable whenCancel(Function() f) {
     cancels.add(f);
-    return _Disposable._(() async {
+    return _Disposable._(() {
       cancels.remove(f);
     });
   }
