@@ -37,3 +37,6 @@
 
 ## 1.0.1
 * optimize project.
+
+## 1.0.2
+* optimize project.

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 /// [Disposable] Dispose class
 abstract class Disposable {
   /// [dispose] dispose cancel-awaiting.
@@ -12,11 +14,11 @@ abstract class Cancelable {
   }
 
   /// [cancel] Cancel.
-  void cancel();
+  FutureOr<void> cancel();
 
   /// [whenCancel] Call [f] when cancel.
   /// [f] cancel function.
-  Disposable whenCancel(Function() f);
+  Disposable whenCancel(FutureOr<void> Function() f);
 }
 
 class _Disposable implements Disposable {
@@ -34,15 +36,15 @@ class _Disposable implements Disposable {
 class _Cancelable implements Cancelable {
   _Cancelable();
 
-  var cancels = <void Function()>[];
-  void cancel() {
-    cancels.forEach((element) {
-      element();
+  var cancels = <FutureOr<void> Function()>[];
+  FutureOr<void> cancel() async {
+    cancels.forEach((f) async {
+      await f();
     });
     cancels.clear();
   }
 
-  Disposable whenCancel(Function() f) {
+  Disposable whenCancel(FutureOr<void> Function() f) {
     cancels.add(f);
     return _Disposable._(() {
       cancels.remove(f);
