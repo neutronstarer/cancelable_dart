@@ -14,7 +14,7 @@ abstract class Cancelable {
   }
 
   /// [cancel] Cancel.
-  FutureOr<void> cancel();
+  Future<void> cancel();
 
   /// [whenCancel] Call [f] when cancel.
   /// [f] cancel function.
@@ -37,12 +37,13 @@ class _Cancelable implements Cancelable {
   _Cancelable();
 
   var cancels = <FutureOr<void> Function()>[];
-  FutureOr<void> cancel() async {
-    for (int i = 0; i < cancels.length; i++) {
-      final f = cancels[i];
-      await f();
-    }
+
+  Future<void> cancel() async {
+    final f = Future.wait(cancels.map((e) async {
+      return await e();
+    }));
     cancels.clear();
+    await f;
   }
 
   Disposable whenCancel(FutureOr<void> Function() f) {
