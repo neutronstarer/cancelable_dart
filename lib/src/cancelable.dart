@@ -39,10 +39,11 @@ class _Cancelable implements Cancelable {
   var cancels = <FutureOr<void> Function()>[];
 
   Future<void> cancel() async {
-    final futures = Future.wait(cancels.map((e) async {
+    final mCancels = List.from(cancels);
+    cancels.clear();
+    final futures = Future.wait(mCancels.map((e) async {
       return await e();
     }));
-    cancels.clear();
     await futures;
   }
 

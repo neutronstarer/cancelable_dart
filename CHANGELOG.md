@@ -52,3 +52,6 @@
 
 ## 4.2.0
 * optimize project.
+
+## 4.2.1
+* fix bug
